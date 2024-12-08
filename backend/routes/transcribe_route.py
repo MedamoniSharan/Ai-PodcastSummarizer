@@ -195,10 +195,6 @@ from models.podcast_model import save_podcast
 import assemblyai as aai
 
 
-
-
-
-# Initialize necessary components
 nltk.download('punkt')
 nltk.download('stopwords')
 
@@ -207,19 +203,12 @@ aai.settings.api_key = "928c276d69644248940e11bc96929831"
 transcriber = aai.Transcriber()
 keyword_model = KeyBERT()
 
-# from googletrans import Translator
-
 transcribe_bp = Blueprint('transcribe', __name__)
 
-
-
-
-# Supported languages
 SUPPORTED_LANGUAGES = {
     'af': 'Afrikaans', 'sq': 'Albanian', 'am': 'Amharic', 'ar': 'Arabic',
     'en': 'English', 'es': 'Spanish', 'fr': 'French', 'de': 'German', 'hi': 'Hindi',
     'te':'Telugu'
-    # Add more supported languages here
 }
 
 # Create a Blueprint for translation routes
@@ -334,7 +323,6 @@ def summarize_text_content(text, language='english', summary_percentage=25):
     summary = ' '.join(top_sentences)
     keywords = [word for word, _ in sorted(freq_table.items(), key=lambda x: x[1], reverse=True)[:10]]
 
-    
     return summary.strip(),keywords
 
 

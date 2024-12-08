@@ -41,9 +41,9 @@ def poll_transcription(transcript_id):
         time.sleep(60)
 
 def save_transcription_data(transcript_data, audio_url, thumbnail, podcast_title, episode_title):
-    global current_filename  # Use global variable for filename
+    global current_filename 
     filename = f"{transcript_data['id']}_chapters.json"
-    current_filename = filename  # Save the filename globally
+    current_filename = filename 
     with open(filename, 'w') as f:
         json.dump({
             'audio_url': audio_url,
